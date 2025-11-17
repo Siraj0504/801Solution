@@ -2,7 +2,10 @@
 
 ### **Azure + Databricks End-to-End Data Engineering & ML Pipeline**
 
-**Author:** *smohammed24@students.icms.edu.au*  
+**Author:** 
+Name: Siraj Mohammed
+Student ID: 4031797
+*  
 **Workspace:** `adb-1200451892143447.7.azuredatabricks.net`  
 **Course:** DAT801A – Cloud Data & Machine Learning  
 **Assessment:** Project / Prototype Submission  
