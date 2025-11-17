@@ -1,4 +1,4 @@
-# 📘 DAT801A – Cloud Data Pipeline & Machine Learning Project
+#  DAT801A – Cloud Data Pipeline & Machine Learning Project
 
 ### **Azure + Databricks End-to-End Data Engineering & ML Pipeline**
 
@@ -9,15 +9,15 @@
 
 ---
 
-# 🧭 1. Project Overview
+#  1. Project Overview
 
 This project demonstrates a complete **cloud-native data engineering and machine learning pipeline** built using **Microsoft Azure** and **Azure Databricks**. The objective is to ingest raw retail sales data, transform it into analytics-ready form, train a predictive machine learning model, and prepare the results for dashboard visualization.
 
-📥 **Ingestion → 🧹 Preparation → 🤖 Machine Learning → 📊 Analytics → 📈 Visualization**
+ **Ingestion →  Preparation →  Machine Learning →  Analytics → Visualization**
 
 ---
 
-# 🏗️ 2. Architecture Summary
+#  2. Architecture Summary
 
 ## **Stage 1 — Ingestion**
 - Raw data uploaded to **Azure Blob Storage**:
@@ -67,7 +67,7 @@ Location: dbfs:/FileStore/delta/processed
 
 ---
 
-# 📂 Repository Structure
+#  Repository Structure
 
 ```
 ├── README.md
@@ -80,7 +80,7 @@ Location: dbfs:/FileStore/delta/processed
 
 ---
 
-# 🧪 Validation
+#  Validation
 - Schema checks  
 - Duplicate checks  
 - ML model validation  
@@ -88,7 +88,7 @@ Location: dbfs:/FileStore/delta/processed
 
 ---
 
-# 🧰 Key Code Snippets
+#  Key Code Snippets
 
 ```python
 df_raw = spark.read.option("header", True).option("inferSchema", True).csv("dbfs:/FileStore/tables/data.csv")
