@@ -1,0 +1,88 @@
+EXECUTION INSTRUCTIONS – Azure + Databricks Pipeline
+===================================================
+
+Follow the steps below to execute the full cloud data pipeline, machine learning workflow, and visualization setup used in the DAT801A project.
+
+---------------------------------------------------
+1. LOGIN & RESOURCE SETUP
+---------------------------------------------------
+1. Open Azure Cloud Shell (Bash).
+2. Run: az login
+3. Select subscription when prompted.
+4. Create Resource Group:
+   az group create --name rg-dat801 --location eastus
+
+---------------------------------------------------
+2. STORAGE ACCOUNT CREATION
+---------------------------------------------------
+1. Create Storage Account:
+   az storage account create --name stdat801siraj --resource-group rg-dat801 --location eastus --sku Standard_LRS
+2. Upload data.csv to Blob Storage.
+3. Confirm upload through Azure Portal.
+
+---------------------------------------------------
+3. EVENT HUB SETUP (OPTIONAL)
+---------------------------------------------------
+1. Create Event Hub Namespace:
+   az eventhubs namespace create --name ehns-dat801 --resource-group rg-dat801 --location eastus --sku Standard
+2. Create Event Hub:
+   az eventhubs eventhub create --name eh-dat801 --resource-group rg-dat801 --namespace-name ehns-dat801
+
+---------------------------------------------------
+4. DATABRICKS WORKSPACE & CLUSTER
+---------------------------------------------------
+1. Open Azure Databricks workspace.
+2. Launch the workspace UI.
+3. Create cluster: db-cluster-dat801
+
+---------------------------------------------------
+5. UPLOAD DATA INTO DBFS
+---------------------------------------------------
+1. In Databricks → Data → Upload File.
+2. Upload data.csv to /FileStore/tables/
+
+---------------------------------------------------
+6. RUN ETL NOTEBOOK
+---------------------------------------------------
+1. Load CSV using spark.read
+2. Clean data (timestamps, nulls, negatives)
+3. Add TotalPrice feature
+4. Save processed data to Delta
+
+---------------------------------------------------
+7. CREATE DELTA TABLE
+---------------------------------------------------
+Run:
+CREATE DATABASE IF NOT EXISTS dat801_db;
+CREATE TABLE dat801_db.sales_processed USING DELTA LOCATION '/FileStore/delta/processed';
+
+---------------------------------------------------
+8. TRAIN MACHINE LEARNING MODEL
+---------------------------------------------------
+1. Load cleaned Delta table
+2. Train RandomForest model
+3. Evaluate Train/Test R2
+4. Save model to: /dbfs/FileStore/models/rf_demo.pkl
+
+---------------------------------------------------
+9. MLflow TRACKING
+---------------------------------------------------
+1. Enable MLflow
+2. Log metrics and artifacts
+3. View run in Experiments tab
+
+---------------------------------------------------
+10. CREATE VISUALIZATIONS
+---------------------------------------------------
+1. Run SQL queries
+2. Create visuals in Databricks
+3. Optional: Connect Power BI
+
+---------------------------------------------------
+11. CLEANUP
+---------------------------------------------------
+az group delete --name rg-dat801 --yes --no-wait
+
+---------------------------------------------------
+END OF INSTRUCTIONS
+---------------------------------------------------
