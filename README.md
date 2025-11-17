@@ -104,6 +104,6 @@ joblib.dump(model, "/dbfs/FileStore/models/rf_demo.pkl")
 
 ---
 
-# 🏁 Conclusion
+# Conclusion
 
 A complete **Azure–Databricks cloud data & ML pipeline**, fulfilling DAT801A assessment requirements.
